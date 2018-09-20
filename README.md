@@ -1,2 +1,8 @@
-# quotidien
-mobile hybrid app created with apache cordova parsing news paper (le quotidien d'oran)
+# quotidie
+This ModernUI hybrid application scraps news website (http://www.lequotidien-oran.com/) and get the top news articles
+# Frameworks used in this application
+  - Apache cordova
+  - JQuery
+  - Monaca OnsenUI
+  - VueJS
+  
