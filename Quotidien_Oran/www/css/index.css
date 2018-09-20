@@ -1,0 +1,38 @@
+.item__thumbnail {
+    margin-right: 10px;
+}
+
+
+.list-item__title {
+    color: #212121;
+}
+
+.list-item__subtitle {
+    color: #757575;
+}
+
+#toolbar {
+    background-color: #1976D2;
+    color: #FFFFFF;
+}
+
+#title {
+    color: #fff;
+}
+
+#mn-icon {
+    color: #fff;
+}
+
+#post {
+    border-bottom: 1px solid rgba(175, 175, 175, 0.43);
+}
+
+
+#back-icon{
+    color:#fff;
+}
+
+.toolbar-button-quiet {
+    color: red;
+}

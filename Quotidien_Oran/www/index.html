@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/onsen.css">
+    <link rel="stylesheet" type="text/css" href="css/component.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/vue.js"></script>
+    <script type="text/javascript" src="scripts/onsen.js"></script>
+    <script type="text/javascript" src="scripts/onsen-vue.js"></script>
+
+
+
+    <title>QuotidienOran</title>
+</head>
+<body>
+    <template id="main">
+        <v-ons-navigator swipeable animation="fade"
+                         :page-stack="pageStack"
+                         @push-page="pageStack.push($event)"></v-ons-navigator>
+    </template>
+
+    <template id="side_menu">
+        <v-ons-splitter>
+            <v-ons-splitter-side swipeable width="150px" collapse="" side="left"
+                                 :open.sync="openSide">
+                <v-ons-page>
+                    <v-ons-list>
+                        <v-ons-list-item tappable>
+                            <span class="list-item__title">A propos</span>
+                        </v-ons-list-item>
+                        <v-ons-list-item tappable>
+                            <span class="list-item__title">Le Quotidien d'oran</span>
+                        </v-ons-list-item>
+                    </v-ons-list>
+                </v-ons-page>
+            </v-ons-splitter-side>
+            <v-ons-splitter-content>
+                <component :is="currentPage" :toggle-menu="() => openSide = !openSide"></component>
+            </v-ons-splitter-content>
+        </v-ons-splitter>
+    </template>
+    <template id="home">
+        <v-ons-page>
+            <v-ons-modal :visible="modalVisible">
+                <p style="text-align: center">
+                    Loading <v-ons-icon icon="fa-spinner" spin></v-ons-icon>
+                </p>
+            </v-ons-modal>
+
+            <ons-toolbar id="toolbar">
+                <div id="title" class="center">À la une</div>
+                <div class="right">
+                    <ons-toolbar-button>
+                        <ons-icon id="mn-icon" icon="fa-info-circle"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+
+            </ons-toolbar>
+            <ons-card class="banner">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/b/b8/Logo_lequotidiendoran.jpg" alt="Le quotiden d'oran" style="width: 100%">
+            </ons-card>
+            <ons-list id="articles">
+                <ons-list-item v-for="art in articles" :key="art['.key']" @click="push(art)" tappable id="post">
+
+                    <div class="center">
+                        <span class="list-item__title">{{ art.tit }}</span><span class="list-item__subtitle">{{ art.bod }}</span>
+                    </div>
+                    <div class="right">
+                        <ons-row>
+                            <ons-col>
+                                <ons-button modifier="quiet" @click="share(art.li)">
+                                    <ons-icon icon="fa-share-alt"></ons-icon>
+                                </ons-button>
+                            </ons-col>
+
+
+                        </ons-row>
+                    </div>
+
+                </ons-list-item>`
+            </ons-list>
+        </v-ons-page>
+    </template>
+    <template id="article">
+        <v-ons-page>
+            <ons-toolbar id="toolbar">
+                <div class="left">
+                    <ons-back-button>
+                        <ons-icon id="back-icon" icon="fa-arrow-left"></ons-icon>
+                    </ons-back-button>
+                </div>
+                <div id="title" class="center">{{ title }}</div>
+                <div class="right">
+                    <ons-toolbar-button>
+                        <ons-icon id="mn-icon" icon="fa-bars"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <v-ons-card>
+                <img src="https://upload.wikimedia.org/wikipedia/fr/b/b8/Logo_lequotidiendoran.jpg" alt="Le quotiden d'oran" style="width: 100%">
+                <div class="title">
+                    {{ title }}
+                </div>
+                <div class="content">
+                    <p>
+                        {{ content }}
+                    </p>
+                </div>
+            </v-ons-card>
+        </v-ons-page>
+    </template>
+    <div id="app">
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+</body>
+</html>

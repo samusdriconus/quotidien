@@ -1,0 +1,25 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-file-md5": {
+            "PACKAGE_NAME": "quotidien.awesomtic.com"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "quotidien.awesomtic.com"
+        },
+        "nl.madebymark.share": {
+            "PACKAGE_NAME": "quotidien.awesomtic.com"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "quotidien.awesomtic.com"
+        }
+    }
+}
